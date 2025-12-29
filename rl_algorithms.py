@@ -1,6 +1,6 @@
 import random
 
-# 1. Policy Evaluation (faster in-place version)
+# 1. Policy Evaluation 
 def policy_evaluation(env, policy, gamma=0.99, theta=0.01, max_iters=200):
     V = {s: 0.0 for s in env.all_states()}
     logs = []
@@ -48,7 +48,7 @@ def policy_iteration(env, gamma=0.99, theta=0.01):
         policy = new_policy
     return V, policy, logs
 
-# 4. Value Iteration (fast in-place)
+# 4. Value Iteration 
 def value_iteration(env, gamma=0.99, theta=0.01, max_iters=200):
     V = {s: 0.0 for s in env.all_states()}
     logs = []
@@ -72,7 +72,7 @@ def value_iteration(env, gamma=0.99, theta=0.01, max_iters=200):
     logs.extend(imp_logs)
     return V, policy, logs
 
-# 5. Monte Carlo Prediction - First Visit
+# 5. Monte Carlo Prediction 
 def mc_prediction(env, policy, gamma=0.99, episodes=100):
     V = {s: 0.0 for s in env.all_states()}
     returns = {s: [] for s in env.all_states()}
