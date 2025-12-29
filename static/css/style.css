@@ -1,0 +1,5 @@
+body { background: #f0f0f0; font-family: Arial; }
+h1 { color: #333; }
+form { max-width: 400px; }
+img { max-width: 600px; }
+pre { background: #eee; padding: 10px; overflow: auto; }

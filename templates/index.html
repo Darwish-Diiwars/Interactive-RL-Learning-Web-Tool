@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RL Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Interactive RL Learning Web Tool</h1>
+    <form method="post">
+        Environment: <select name="env">
+            {% for e in envs %}<option>{{ e }}</option>{% endfor %}
+        </select><br>
+        Algorithm: <select name="algo">
+            {% for a in algos %}<option>{{ a }}</option>{% endfor %}
+        </select><br>
+        Gamma: <input type="range" name="gamma" min="0" max="1" step="0.01" value="0.99"><br>
+        Alpha: <input type="range" name="alpha" min="0" max="1" step="0.01" value="0.1"><br>
+        Epsilon: <input type="range" name="epsilon" min="0" max="1" step="0.01" value="0.1"><br>
+        n (n-step): <input type="number" name="n" value="3"><br>
+        Episodes: <input type="number" name="episodes" value="100"><br>
+        Theta: <input type="number" name="theta" step="0.001" value="0.001"><br>
+        <input type="submit" value="Run">
+    </form>
+    {% if results %}
+        <h2>Results</h2>
+        {% if results.val_img %}<img src="data:image/png;base64,{{ results.val_img }}" alt="Values"><br>{% endif %}
+        {% if results.pol_img %}<img src="data:image/png;base64,{{ results.pol_img }}" alt="Policy"><br>{% endif %}
+        <pre>{{ results.logs }}</pre>
+    {% endif %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

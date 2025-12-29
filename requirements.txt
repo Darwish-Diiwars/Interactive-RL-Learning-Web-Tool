@@ -1,0 +1,4 @@
+flask
+gymnasium
+numpy
+matplotlib
