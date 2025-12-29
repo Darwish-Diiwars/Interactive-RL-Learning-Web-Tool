@@ -21,7 +21,6 @@ def index():
         theta = float(request.form.get('theta', 0.01))
 
         env = get_env(env_name)
-        # Random policy for prediction algos
         policy = {s: {a: 1.0 / len(env.actions) for a in range(len(env.actions))} for s in env.all_states()}
 
         if algo_name == "Policy Iteration":
