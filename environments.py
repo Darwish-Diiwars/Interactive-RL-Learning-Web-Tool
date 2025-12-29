@@ -11,7 +11,7 @@ class StochasticGridWorld:
         self.state = (0, 0)
         self.goal = (5, 5)
         self.obstacles = [(1,2), (2,3), (3,1), (4,4)]
-        self.actions = {0: (-1,0), 1: (1,0), 2: (0,-1), 3: (0,1)}  # Up, Down, Left, Right
+        self.actions = {0: (-1,0), 1: (1,0), 2: (0,-1), 3: (0,1)} 
         self.slip_prob = 0.1
 
     def reset(self):
@@ -59,14 +59,14 @@ class TaxiWrapper(gym.Wrapper):
 
     def reset(self):
         s, _ = super().reset()
-        return s  # Integer state
+        return s  
 
     def step(self, a):
         next_s, r, done, _, _ = super().step(a)
         return next_s, r, done, {}
 
     def all_states(self):
-        return list(range(self.env.observation_space.n))  # 0 to 499
+        return list(range(self.env.observation_space.n)) 
 
     def transitions(self, s, a):
         trans = self.unwrapped.P[s][a]
